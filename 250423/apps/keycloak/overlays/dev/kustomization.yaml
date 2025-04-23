@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
   - name: keycloak
-    namespace: keycloak
+    namespace: keycloak-dev
     repo: oci://registry-1.docker.io/bitnamicharts
     releaseName: keycloak
     valuesFile: ./charts/keycloak/override.values.yaml
