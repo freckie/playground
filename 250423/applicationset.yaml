@@ -29,7 +29,9 @@ spec:
         repoURL: https://github.com/freckie/playground
         targetRevision: master
         path: '{{path}}'
+        plugin:
+          name: kustomize-helm
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{path}}'
-
+        
