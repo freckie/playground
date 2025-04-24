@@ -1,0 +1,39 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmCharts:
+  - name: keycloak
+    namespace: keycloak
+    repo: oci://registry-1.docker.io/bitnamicharts
+    releaseName: keycloak
+    version: 24.5.7
+
+    valuesInline:
+      auth:
+        adminUser: admin
+        adminPassword: admin
+        existingSecret: keycloak-secret
+        passwordSecretKey: ADMIN_PASSWORD
+
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hostname: keycloak.thor.frec.kr
+
+      postgresql:
+        enabled: true
+        auth:
+          username: postgres
+          database: keycloak
+          existingSecret: keycloak-secret
+          secretKeys:
+            userPasswordKey: POSTGRES_PASSWORD
+
+helmGlobals:
+  chartHome: charts
+
+secretGenerator:
+  - name: keycloak-secret
+    literals:
+      - ADMIN_PASSWORD=admin
+      - POSTGRES_PASSWORD=postgres

@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: applicationset
+  namespace: argocd
+
+spec:
+  goTemplate: true
+  goTemplateOptions: [ "missingkey=error" ]
+
+  generators:
+    - git:
+        repoURL: https://github.com/freckie/playground
+        revision: master
+        directories:
+          - path: "250424/apps/*/overlays/dev"
+          - path: "250424/apps/*/overlays/prod"
+  
+  template:
+    metadata:
+      name: '{{ index .path.segments 2 }}{{ if eq (index .path.segments 4) "dev" }}-dev{{ end }}' # appName(-dev)?
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/freckie/playground
+        targetRevision: master
+        path: "{{ .path.path }}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{ index .path.segments 2 }}{{ if eq (index .path.segments 4) "dev" }}-dev{{ end }}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - Validate=false
+          - CreateNamespace=true

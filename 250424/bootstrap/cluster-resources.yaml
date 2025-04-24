@@ -11,6 +11,7 @@ spec:
   - git:
       files:
       - path: 250424/bootstrap/cluster-resources/*.json
+      - path: 250424/bootstrap/cluster-resources/*.yaml
       repoURL: https://github.com/freckie/playground.git
       requeueAfterSeconds: 20
       revision: ""
