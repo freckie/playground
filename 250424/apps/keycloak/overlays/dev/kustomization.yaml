@@ -27,5 +27,10 @@ helmCharts:
           secretKeys:
             userPasswordKey: postgres-password
 
+      service:
+        ports:
+          http: 10080
+          https: 10443
+
 helmGlobals:
   chartHome: charts
