@@ -34,6 +34,7 @@ helmGlobals:
 
 secretGenerator:
   - name: keycloak-cred
+    namespace: keycloak
     literals:
       - ADMIN_PASSWORD=admin
       - POSTGRES_PASSWORD=postgres
