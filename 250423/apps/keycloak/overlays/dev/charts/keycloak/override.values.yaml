@@ -13,3 +13,4 @@ postgresql:
     username: postgres
     password: postgres
     database: keycloak
+    existingSecret: ""
