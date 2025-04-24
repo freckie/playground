@@ -11,8 +11,7 @@ helmCharts:
     valuesInline:
       auth:
         adminUser: admin
-        existingSecret: keycloak-cred
-        passwordSecretKey: ADMIN_PASSWORD
+        adminPassword: admin
 
       ingress:
         enabled: true
@@ -23,19 +22,10 @@ helmCharts:
         enabled: true
         auth:
           username: postgres
+          password: postgres
           database: keycloak
-          existingSecret: keycloak-cred
           secretKeys:
-            userPasswordKey: POSTGRES_PASSWORD
+            userPasswordKey: postgres-password
 
 helmGlobals:
   chartHome: charts
-
-secretGenerator:
-  - name: keycloak-cred
-    namespace: keycloak
-    options:
-      disableNameSuffixHash: true
-    literals:
-      - ADMIN_PASSWORD=admin
-      - POSTGRES_PASSWORD=postgres
