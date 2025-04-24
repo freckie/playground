@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: argocd-cm
   namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
 data:
-  configManagementPlugins: |
-    - name: kustomize-helm
-      generate:
-        command: [ "kustomize", "build", "--enable-helm", "{{path}}" ]
+  kustomize.buildOptions: --enable-helm
