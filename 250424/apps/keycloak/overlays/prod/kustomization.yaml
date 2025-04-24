@@ -12,7 +12,7 @@ helmCharts:
       auth:
         adminUser: admin
         adminPassword: admin
-        existingSecret: keycloak-secret
+        existingSecret: keycloak-cred
         passwordSecretKey: ADMIN_PASSWORD
 
       ingress:
@@ -25,7 +25,7 @@ helmCharts:
         auth:
           username: postgres
           database: keycloak
-          existingSecret: keycloak-secret
+          existingSecret: keycloak-cred
           secretKeys:
             userPasswordKey: POSTGRES_PASSWORD
 
@@ -33,7 +33,7 @@ helmGlobals:
   chartHome: charts
 
 secretGenerator:
-  - name: keycloak-secret
+  - name: keycloak-cred
     literals:
       - ADMIN_PASSWORD=admin
       - POSTGRES_PASSWORD=postgres
