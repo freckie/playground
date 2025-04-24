@@ -24,6 +24,7 @@ helmCharts:
         auth:
           username: postgres
           database: keycloak
+          existingSecret: keycloak-cred
           secretKeys:
             userPasswordKey: POSTGRES_PASSWORD
 
