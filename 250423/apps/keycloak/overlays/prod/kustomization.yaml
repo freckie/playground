@@ -9,8 +9,28 @@ helmCharts:
     namespace: keycloak
     repo: oci://registry-1.docker.io/bitnamicharts
     releaseName: keycloak
-    valuesFile: ./charts/keycloak/override.values.yaml
     version: 24.5.7
+    
+    valuesInline:
+      auth:
+        adminUser: admin
+        adminPassword: admin
+        existingSecret: keycloak-secret
+        passwordSecretKey: ADMIN_PASSWORD
+
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hostname: dev.thor.frec.kr
+
+      postgresql:
+        enabled: true
+        auth:
+          username: postgres
+          database: keycloak
+          existingSecret: keycloak-secret
+          secretKeys:
+            userPasswordKey: POSTGRES_PASSWORD
 
 helmGlobals:
   chartHome: charts

@@ -15,11 +15,11 @@ spec:
         revision: master
         directories:
           - path: "250423/apps/*/overlays/dev"
-          # - path: "250423/apps/*/overlays/prod"
+          - path: "250423/apps/*/overlays/prod"
   
   template:
     metadata:
-      name: "{{ index .path.segments 2 }}"
+      name: "{{ index .path.segments 2 }}-{{ index .path.segments 4 }}" # (appName)-(dev|prod)
     spec:
       project: default
       source:
@@ -28,7 +28,7 @@ spec:
         path: "{{ .path.path }}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: "{{ index .path.segments 2 }}-{{ index .path.segments 4 }}" # (appName)-(dev|prod)
+        namespace: "{{ index .path.segments 2 }}-{{ index .path.segments 4 }}"
       syncPolicy:
         automated:
           prune: true
