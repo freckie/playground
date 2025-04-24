@@ -19,7 +19,7 @@ spec:
   
   template:
     metadata:
-      name: "{{ index .path.segments 2 }}-{{ index .path.segments 4 }}" # (appName)-(dev|prod)
+      name: '{{ index .path.segments 2 }}{{ if eq (index .path.segments 4) "dev" }}-dev{{ end }}' # appName(-dev)?
     spec:
       project: default
       source:
@@ -28,7 +28,7 @@ spec:
         path: "{{ .path.path }}"
       destination:
         server: https://kubernetes.default.svc
-        namespace: "{{ index .path.segments 2 }}-{{ index .path.segments 4 }}"
+        namespace: '{{ index .path.segments 2 }}{{ if eq (index .path.segments 4) "dev" }}-dev{{ end }}'
       syncPolicy:
         automated:
           prune: true

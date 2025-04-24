@@ -16,7 +16,7 @@ helmCharts:
       ingress:
         enabled: true
         ingressClassName: traefik
-        hostname: dev.thor.frec.kr
+        hostname: keycloak.dev.thor.frec.kr
 
       postgresql:
         enabled: true
