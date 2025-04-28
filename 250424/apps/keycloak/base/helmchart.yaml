@@ -1,0 +1,10 @@
+apiVersion: builtin
+kind: HelmChartInflationGenerator
+metadata:
+  name: keycloak
+  namespace: keycloak
+chartHome: oci://registry-1.docker.io/bitnamicharts
+releaseName: keycloak
+name: keycloak
+version: 24.5.7
+valuefile: ./values.yaml
