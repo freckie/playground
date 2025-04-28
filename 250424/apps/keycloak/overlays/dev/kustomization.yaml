@@ -26,7 +26,12 @@ resources:
   - ../../base
 
 patches:
-  - path: helmpatch.yaml
-    target:
+  - target:
       kind: HelmChartInflationGenerator
       name: keycloak
+      version: builtin
+    patch: |-
+      - op: add
+        path: /additionalValuesFiles
+        value:
+          - apps/keycloak/overlays/dev/overwrite.values.yaml
