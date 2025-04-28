@@ -1,4 +1,4 @@
-# Apps
+# Apps 
 This directory contains all of the applications you installed by using:
 ```bash
 argocd-autopilot app create <APP_NAME> --app <APP_SPECIFIER> -p <PROJECT_NAME>
