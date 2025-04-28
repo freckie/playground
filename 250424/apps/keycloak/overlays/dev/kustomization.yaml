@@ -12,6 +12,5 @@ helmCharts:
     version: 24.5.7
 
     valuesMerge: override
-    valuesFile: ../../base/values.yaml
     additionalValuesFiles:
       - ./values.yaml
