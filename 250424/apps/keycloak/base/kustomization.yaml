@@ -11,4 +11,4 @@ helmCharts:
     valuesFile: ./values.yaml
 
 helmGlobals:
-  chartHome: charts
+  chartHome: ../charts
