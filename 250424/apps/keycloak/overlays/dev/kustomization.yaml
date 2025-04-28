@@ -13,4 +13,3 @@ helmCharts:
 
     additionalValuesFiles:
       - ./values.yaml
-    valuesMerge: override
