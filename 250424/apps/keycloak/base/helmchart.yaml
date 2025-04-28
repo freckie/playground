@@ -3,7 +3,8 @@ kind: HelmChartInflationGenerator
 metadata:
   name: keycloak
   namespace: keycloak
-chartHome: oci://registry-1.docker.io/bitnamicharts
+chartHome: apps/keycloak/charts
+repo: oci://registry-1.docker.io/bitnamicharts
 releaseName: keycloak
 name: keycloak
 includeCRDs: true 
