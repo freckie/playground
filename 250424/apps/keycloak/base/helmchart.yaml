@@ -8,4 +8,4 @@ releaseName: keycloak
 name: keycloak
 includeCRDs: true 
 version: 24.5.7
-valuefile: ./values.yaml
+valuefile: apps/keycloak/base/values.yaml

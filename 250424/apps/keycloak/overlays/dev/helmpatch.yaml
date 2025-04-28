@@ -1,4 +1,4 @@
 - op: add
   path: /additionalValuesFiles
   value:
-    - ./overwrite.values.yaml
+    - apps/keycloak/overlays/dev/overwrite.values.yaml
