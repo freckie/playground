@@ -12,7 +12,7 @@ spec:
     chart: keycloak
     repoURL: https://github.com/bitnami/charts.git
     path: bitnami/keycloak
-    targetRevision: main
+    targetRevision: HEAD
     helm:
       releaseName: keycloak
       valueFiles:
