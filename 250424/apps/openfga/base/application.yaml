@@ -10,7 +10,7 @@ spec:
     namespace: openfga
   source:
     repoURL: https://openfga.github.io/helm-charts
-    chart: openfga/openfga
+    chart: openfga
     targetRevision: "0.2.29"
     helm:
       releaseName: openfga
