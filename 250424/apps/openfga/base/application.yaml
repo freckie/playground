@@ -19,7 +19,11 @@ spec:
         datastore:
           engine: postgres
           uri: "postgres://postgres:postgres@openfga-postgresql.openfga.svc.cluster.local:5432/postgres?sslmode=disable"
-          applyMigrations: true
+        serviceAccount:
+          annotations:
+            helm.sh/hook: "post-install, post-upgrade, post-rollback, post-delete"
+            helm.sh/hook-weight: "-6"
+            helm.sh/hook-delete-policy: "before-hook-creation"
         postgresql:
           enabled: true
           auth:
