@@ -14,7 +14,7 @@ spec:
     targetRevision: "0.2.29"
     helm:
       releaseName: openfga
-      valuesObject:
+      values: |
         replicaCount: 1
         
         datastore:
@@ -26,6 +26,9 @@ spec:
           annotations:
             helm.sh/hook: "pre-install, post-upgrade, post-rollback, post-delete" # not post-install
             helm.sh/hook-weight: "-5"
+
+        serviceAccount:
+          create: true
 
         postgresql:
           enabled: true
