@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: openfga
+  name: authz
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: openfga
+    namespace: authz
   source:
     repoURL: https://openfga.github.io/helm-charts
     chart: openfga
@@ -18,11 +18,7 @@ spec:
         replicaCount: 1
         datastore:
           engine: postgres
-          uri: "postgres://postgres:postgres@openfga-postgresql.openfga.svc.cluster.local:5432/postgres?sslmode=disable"
-        migrate:
-          annotations:
-            helm.sh/hook: "pre-install, post-install, post-upgrade, post-rollback, post-delete"
-            helm.sh/hook-weight: "-4"
+          uri: "postgres://postgres:postgres@openfga-postgresql.authz.svc.cluster.local:5432/postgres?sslmode=disable"
         postgresql:
           enabled: true
           auth:
