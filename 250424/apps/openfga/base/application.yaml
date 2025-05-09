@@ -16,11 +16,9 @@ spec:
       releaseName: openfga
       values: |
         replicaCount: 1
-        
         datastore:
           engine: postgres
           uri: "postgres://postgres:postgres@openfga-postgresql.openfga.svc.cluster.local:5432/postgres?sslmode=disable"
-
         postgresql:
           enabled: true
           auth:
