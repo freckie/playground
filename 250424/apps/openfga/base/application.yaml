@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openfga
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: openfga
+  source:
+    repoURL: https://openfga.github.io/helm-charts
+    chart: openfga/openfga
+    targetRevision: HEAD
+    helm:
+      releaseName: openfga
+      valuesObject:
+        replicaCount: 1
+        
+        datastore:
+          engine: postgres
+          uri: "postgres://postgres:postgres@openfga-postgresql.openfga.svc.cluster.local:5432/postgres?sslmode=disable"
+
+        postgresql:
+          enabled: true
+          auth:
+            username: postgres
+            password: postgres
+            database: postgres
+            secretKeys:
+              userPasswordKey: openfga-password
