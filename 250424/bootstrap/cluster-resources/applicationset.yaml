@@ -14,8 +14,8 @@ spec:
         repoURL: https://github.com/freckie/playground
         revision: master
         directories:
-          - path: "250424/apps/*/overlays/dev"
-          # - path: "250424/apps/*/overlays/prod"
+          # - path: "250424/apps/*/overlays/dev"
+          - path: "250424/apps/*/overlays/prod"
   
   template:
     metadata:
