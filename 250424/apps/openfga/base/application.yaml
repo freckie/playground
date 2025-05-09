@@ -21,7 +21,7 @@ spec:
           uri: "postgres://postgres:postgres@openfga-postgresql.openfga.svc.cluster.local:5432/postgres?sslmode=disable"
         migrate:
           annotations:
-            helm.sh/hook: "crd-install, post-install, post-upgrade, post-rollback, post-delete"
+            helm.sh/hook: "pre-install, post-install, post-upgrade, post-rollback, post-delete"
             helm.sh/hook-weight: "-4"
         postgresql:
           enabled: true
