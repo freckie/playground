@@ -19,6 +19,12 @@ spec:
         datastore:
           engine: postgres
           uri: "postgres://postgres:postgres@openfga-postgresql.authz.svc.cluster.local:5432/postgres?sslmode=disable"
+        serviceAccount:
+          create: true
+        migrate:
+          annotations:
+            helm.sh/hook: "pre-install, post-upgrade, post-rollback, post-delete"
+            helm.sh/hook-weight: "-5"
         postgresql:
           enabled: true
           auth:
@@ -26,4 +32,4 @@ spec:
             password: postgres
             database: postgres
             secretKeys:
-              userPasswordKey: openfga-password
+              userPasswordKey: authz-password
