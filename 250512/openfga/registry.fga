@@ -1,0 +1,25 @@
+# Authorization Model for Container Registry
+#  @author freckie@frec.kr
+
+model
+  schema 1.1
+
+type user
+
+type user_group
+  relations
+    define admin: [user]
+    define member: [user]
+
+type repository
+  relations
+    define parent: [repository_group]
+    define can_push: [user, user_group#member] and (can_push from parent)
+    define can_pull: [user, user_group#member] and ((can_pull from parent) or (can_push))
+
+type repository_group
+  relations
+    define can_create: [user, user_group]
+    define can_delete: [user, user_group]
+    define can_push: [user, user_group#member]
+    define can_pull: [user, user_group#member] or can_push
