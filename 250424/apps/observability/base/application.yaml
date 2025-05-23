@@ -14,8 +14,7 @@ spec:
       targetRevision: "27.15.0"
       helm:
         valueFiles:
-          - $appRepo/base/values.yaml
+          - $appRepo/250424/apps/observability/base/values.yaml
     - repoURL: https://github.com/freckie/playground
-      path: 250424/apps/observability
       targetRevision: master
       ref: appRepo
