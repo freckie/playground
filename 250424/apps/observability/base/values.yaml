@@ -7,7 +7,7 @@ server:
     enabled: true
     ingressClassName: traefik
     hosts:
-      - thor.frec.kr
+      - observe.thor.frec.kr
 
 alertmanager:
   enabled: false
