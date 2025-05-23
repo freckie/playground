@@ -1,0 +1,6 @@
+server:
+  defaultFlagsOverride:
+    - --enable-feature=remote-write-receiver
+
+alertmanager:
+  enabled: false
