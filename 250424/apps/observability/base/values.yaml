@@ -4,3 +4,10 @@ server:
 
 alertmanager:
   enabled: false
+
+ingress:
+  enabled: true
+  ingressClassName: traefik
+  hosts:
+    - 192.168.0.52
+    - thor.frec.kr
