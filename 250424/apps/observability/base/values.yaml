@@ -3,12 +3,12 @@ server:
     - web.enable-remote-write-receiver
     - web.enable-lifecycle
 
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - 192.168.0.52
+      - thor.frec.kr
+
 alertmanager:
   enabled: false
-
-ingress:
-  enabled: true
-  ingressClassName: traefik
-  hosts:
-    - 192.168.0.52
-    - thor.frec.kr
